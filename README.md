@@ -9,7 +9,7 @@ To run the application use the following steps:
    nodemon app.js
 4. Navigate to any browser and launch the application on 127.0.0.1:8080
 
-5. Not enay item save and delete functions will not work unless a user has signed in.
+5. Note that the item save and delete functionalities and the associated options will not work unless a user has signed in.
 
   Use: elon.musk@tesla.com / password1
   
