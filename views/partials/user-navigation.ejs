@@ -1,0 +1,14 @@
+
+
+
+
+  <%if(user===undefined||user===null){%>
+    <a href="/profile" id="signIn">Sign In</a>
+    |<a href="/profile">Saved Items</a>
+    <%}else{%>
+    <a href="/profile/signOut">Sign Out</a>
+    |<a href="/profile">Saved Items</a>
+    <%}%>
+
+  |
+  <a href="#">Cart</a>

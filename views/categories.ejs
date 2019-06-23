@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset="utf-8">
+  <title>SDN/NFV Tool Book</title>
+  <link rel="stylesheet" href="/assets/stylesheets/style.css">
+</head>
+
+<body>
+  <div class="firstdiv">
+    <div class="header">
+      <header>
+      <% include partials/header.ejs %>
+      </header>
+    </div>
+
+    <div class="nav">
+      <nav>
+        <% include partials/user-navigation.ejs %>
+      </nav>
+    </div>
+
+    <div class="aside">
+      <aside>
+      <% include partials/site-navigation.ejs %>
+      </aside>
+    </div>
+
+
+
+    <div class="gen2">
+     <% for(let i=0;i<getCat.length;i++){ %>
+      <h3 class="category"><%= getCat[i] %></h3>
+
+      <ul>
+        <% for(let j=0;j<getItems.length;j++){
+          if(getItems[j].catalogCategory=== getCat[i]){
+        %>
+        <li><a href="categories/item/<%= getItems[j].itemCode%> "><%= getItems[j].itemName %></a></li>
+        <% }
+      } %>
+
+      </ul>
+      <% } %>
+
+    </div>
+
+    <div class="footer">
+      <footer>
+        <% include partials/footer.ejs %>
+      </footer>
+    </div>
+  </div>
+
+
+
+</body>
+</html>

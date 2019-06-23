@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SDN/NFV Tool Book</title>
+  <link rel="stylesheet" href="/assets/stylesheets/style.css">
+</head>
+
+<body >
+
+  <div class="firstdiv">
+    <div class="header">
+      <header>
+      <% include partials/header.ejs %>
+      </header>
+    </div>
+
+    <div class="nav">
+      <nav>
+        <% include partials/user-navigation.ejs %>
+      </nav>
+    </div>
+
+    <div class="aside">
+      <aside>
+      <% include partials/site-navigation.ejs %>
+      </aside>
+    </div>
+
+
+    <div class="gen3">
+       <h3 id="r">Please provide your feedback</h3>
+       <img id="image" src="<%= item.getImageURL(item.itemImage)%>" alt="OpenvSwitch logo">
+       <h3 id="r1">Rating</h3>
+
+       <a href="javascript:{}" onclick="document.getElementById('confirmform').submit();" class="mybutton" name="action" value="updateRating">Confirm</a>
+         <form action="/profile/function" method="post" id="confirmform">
+
+           <input type="hidden" name="action" value="updateRating" />
+
+         <select id="drop" name="selectpicker" >
+           <option value="5">5 star</option>
+           <option value="4">4 star</option>
+           <option value="3">3 star</option>
+           <option value="2">2 star</option>
+           <option value="1">1 star</option>
+           <option value="0">0 star</option>
+           <script type="text/javascript">
+             let rate = document.getElementById('drop').value = '<%= rate  %>';
+           </script>
+         </select>
+         <input type="hidden" name="list" value="<%= item.itemCode %>" />
+         <input type="hidden" name="itemList" value="<%= itemList %>" />
+          </form>
+
+          <form action="/profile/function" method="post" id="updateFlagform">
+             <input type="hidden" name="action" value="updateFlag" />
+         <div class="save">
+           <% if(checkedSent=="on"){%>
+
+           <input class="container" type="checkbox" id="checkbox" name="checkbox" checked>
+           <label  class="incontainer" for="checkbox">I used it</label>
+
+           <% }%>
+           <% if(checkedSent=="off"){%>
+
+           <input class="container" type="checkbox" id="checkbox" name="checkbox" unchecked>
+           <label  class="incontainer" for="checkbox"></label>
+
+           <% }%>
+           <input type="hidden" name="list" value="<%= item.itemCode %>" />
+           <input type="hidden" name="itemList" value="<%= itemList %>" />
+           <a href="javascript:{}" onclick="document.getElementById('updateFlagform').submit();" class="mybutton" name="action" value="updateFlag">I used it</a>
+            </form>
+         </div>
+
+       <div class="para">
+         <p><%= item.description %></p>
+       </div>
+  </div>
+
+    <div class="footer">
+      <footer>
+      <% include partials/footer.ejs %>
+      </footer>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

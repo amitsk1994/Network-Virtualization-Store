@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SDN/NFV Tool Book</title>
+  <link rel="stylesheet" href="/assets/stylesheets/style.css">
+</head>
+
+<body>
+  <div class="firstdiv">
+    <div class="header">
+      <header>
+        <% include partials/header.ejs %>
+      </header>
+    </div>
+
+    <div class="nav">
+      <nav>
+        <% include partials/user-navigation.ejs %>
+      </nav>
+    </div>
+
+    <div class="aside">
+      <aside>
+        <% include partials/site-navigation.ejs %>
+      </aside>
+    </div>
+
+
+
+    <div class="itemImage">
+      <h2> Saved Network Elements </h2>
+      <div class="table">
+        <table>
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Category</th>
+              <th>My Rating</th>
+              <th>Used it</th>
+              <th></th>
+            </tr>
+          </thead>
+          <% for(let i=0;i<list.length;i++){ %>
+          <tr>
+
+            <td><%= list[i].item.itemName %></td>
+            <td><%= list[i].item.catalogCategory %></td>
+            <td><% var stars = list[i].rating %>
+              <% for(let i=0;i<stars;i++){ %>
+                    <span class="rating">★</span>
+                <%  }%>
+              <% for(let i=0;i<5-stars;i++){ %>
+                  <span class="rating">☆</span>
+              <%    } %>
+
+
+            </td>
+            <td>
+              <% if(list[i].used=="on"){ %>
+                <div class="checkboxFour">
+              <input class="checkbox" type="checkbox" id="checkbox" name="checkbox" checked disabled>
+              <label for="checkbox"></label>
+              </div>
+          <%   }%>
+          <% if(list[i].used=="off"){ %>
+            <div class="checkboxFour">
+            <input class="checkbox" type="checkbox" id="checkbox" name="checkbox" unchecked disabled>
+            <label for="checkbox"></label>
+            </div>
+      <%   }%>
+            </td>
+            <td >
+              <form action="/profile/function" method="post" id="saveform<%= i %>">
+
+                <input type="hidden" name="action" value="deleteItem" />
+                <input type="hidden" name="list" value="<%= list[i].item.itemCode %>" />
+                <input type="hidden" name="itemList" value="<%= itemList %>" />
+                <a href="javascript:{}" onclick="document.getElementById('saveform<%=i%>').submit();" class="mybutton2" name="action" value="deleteItem">Delete</a>
+              </form>
+              <form action="/profile/function" method="post" id="updateform<%= i %>">
+
+                <input type="hidden" name="action" value="updateProfile" />
+                <input type="hidden" name="list" value="<%= list[i].item.itemCode %>" />
+                <input type="hidden" name="itemList" value="<%= itemList %>" />
+              <a href="javascript:{}" onclick="document.getElementById('updateform<%=i%>').submit();" class="mybutton2" name="action" value="updateProfile">Update</a>
+              </form>
+            </td>
+          <%  } %>
+          </tr>
+
+      </table>
+    </div>
+    <div class="lastlink">
+      <p>Click <a href="#">here</a> to share a new network element.</p>
+    </div>
+
+   </div>
+
+   <div class="footer">
+     <footer>
+       <% include partials/footer.ejs %>
+     </footer>
+   </div>
+  </div>
+
+
+
+</body>
+</html>

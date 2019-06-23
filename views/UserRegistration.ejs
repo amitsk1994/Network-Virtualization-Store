@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>signUp</title>
+  <link rel="stylesheet" href="/assets/stylesheets/style.css">
+</head>
+
+<body >
+
+  <div class="firstdiv">
+    <div class="header">
+      <header>
+      <% include partials/header.ejs %>
+      </header>
+    </div>
+
+    <div class="nav">
+      <nav>
+        <% include partials/user-navigation.ejs %>
+      </nav>
+    </div>
+
+    <div class="aside">
+      <aside>
+      <% include partials/site-navigation.ejs %>
+      </aside>
+    </div>
+
+
+    <div class="gen1">
+       <p>Welcome to SDN-NFV Tool Book Guide </p>
+       <p>Please enter your username and password to sign in.</p>
+       <div class="containerlogin">
+         <form method="post" action="/profile/signUp">
+          <p><input type="text" name="firstName" value="" placeholder="First Name"> <input type="text" name="lastName" value="" placeholder="Last Name"> <input type="text" name="email" value="" placeholder="Email Id"></p>
+          <p></p>
+          <p></p>
+          <p><input type="password" name="password" value="" placeholder="password"> <input type="password" name="repassword" value="" placeholder="Re-enter password"></p>
+          <p><input type="text" name="address" value="" placeholder="address"> <input type="text" name="city" value="" placeholder="city"></p>
+          <p></p>
+          <p><input type="text" name="state" value="" placeholder="state"> <input type="text" name="zip" value="" placeholder="Zip Code"> <input type="text" name="country" value="" placeholder="Country"></p>
+          <p></p>
+          <p></p>
+
+          <p class="submit"><input type="submit" name="register" value="Register"></p>
+          </form>
+
+       </div>
+
+       </div>
+
+       <div class="footer">
+         <footer>
+         <% include partials/footer.ejs %>
+         </footer>
+       </div>
+
+
+  </div>
+
+
+
+
+
+</body>
+
+</html>

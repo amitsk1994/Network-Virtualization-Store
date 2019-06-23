@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset="utf-8">
+  <title>SDN/NFV Tool Book</title>
+  <link rel="stylesheet" href="/assets/stylesheets/style.css">
+</head>
+
+
+<body>
+  <div class="firstdiv">
+    <div class="header">
+      <header>
+        <% include partials/header.ejs %>
+      </header>
+    </div>
+
+    <div class="nav">
+      <nav>
+        <% include partials/user-navigation.ejs %>
+      </nav>
+    </div>
+
+    <div class="aside">
+      <aside>
+        <% include partials/site-navigation.ejs %>
+      </aside>
+    </div>
+
+
+
+    <div class="itemImage">
+
+        <h5> Home > Categories > Item </h5>
+        <img id="image" src="<%= item.getImageURL(item.itemImage)%>" alt="OpenvSwitch logo">
+
+        <div class="next">
+          <h3><%= item.itemName %></h3>
+          <p><%= item.catalogCategory %></p>
+          <div class="rating">
+            <span>★</span><span>★</span><span>★</span><span>☆</span><span>☆</span>
+          </div>
+        </div>
+
+
+        <div class="save">
+          <form action="/profile/function" method="post" id="form">
+  	        <input type="hidden" name="itemCode" value="<%= item.itemCode %>" />
+
+            <input type="hidden" name="action" value="save" />
+          <%  if(user==null){%>
+              <a href="/categories" class="mybutton">Save List</a>
+          <%  } %>
+          <%  if(user!=null){ %>
+            <a href="javascript:{}" onclick="document.getElementById('form').submit();" class="mybutton" name="action" value="save">Save To List</a>
+          <%}%>
+        </form>
+        <%  if(user==null){%>
+          <a href="/categories" class="mybutton">Rate It</a>
+        <%  } %>
+        <%  if(user!=null){ %>
+        <a href="/categories/item/feedback/<%= item.itemCode %>" class="mybutton">★ Rate It</a>
+        <%}%>
+        <a id="back" href="/categories" class="mybutton"> Back to Categories</a>
+        </div>
+
+        <div class="para">
+          <p><%= item.description %></p>
+        </div>
+
+    </div>
+
+    <div class="footer">
+      <footer>
+      <% include partials/footer.ejs %>
+      </footer>
+    </div>
+  </div>
+
+
+
+</body>
+</html>
