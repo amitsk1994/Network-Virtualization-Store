@@ -2,7 +2,7 @@
 
 This project was created to show case a full stack network based application made using nodejs, expressjs and MongoDB.
 
-To run the application follow the following steps:
+To run the application use the following steps:
 1. Start mongoDB by using commands "mongod" and then "mongo" in two different terminals.
 2. Create the database by using the txt file provided, with all the queries.
 3. start application using terminal on the root folder of the project
